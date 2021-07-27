@@ -12,11 +12,12 @@ For building and running the application you need:
 
 ## Building and Running Application using Command Prompt
 
-Clone from git repository `git clone URL`
+Clone from git repository `git clone URL`.
 Navigate to project root and `mvn clean install`, alternativey use `mvn clean install -DskipTests=true` to skip tests
 
 ## Running the Application on IDE
 
+Clone from git repository `git clone URL`.
 File >> Import as `Existing Maven Project`.
 Execute the `main` method in the `com.chaitanya.LibraryApplication` class from your IDE.
 Application Built on STS IDE, can work on eclipse and Intellij IDE
