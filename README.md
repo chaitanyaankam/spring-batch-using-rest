@@ -1,5 +1,5 @@
 # Spring-Batch-REST
-- Spring Batch and Spring REST example (loading Data form CSV to Database using spring batch framework).
+- Spring Batch and Spring REST example (Loading Data form CSV to Database using spring batch framework).
 - Batch controlled and monitored through REST API's exposed (Starting, Aborting, Restarting and Monitoring).
 - Resources loaded from Batch are exposed through Spring REST (Exposing Data loaded via spring batch).
 
