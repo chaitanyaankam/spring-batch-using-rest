@@ -45,6 +45,7 @@ Not Required:
 ## Assumptions
 - Data in CSV is structured
 - Skip Policy, Retry Policy and Restart Policy dosent corresponds to any business case for the given implmentation
+- ...colud be more
 
 ## Pending
 - Validation to allow only CSV file in file upload API `TO DO`
