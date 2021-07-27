@@ -24,7 +24,7 @@ Application Built on STS IDE, can work on eclipse and Intellij IDE
 
 ## Note
 - If `java.net.BindException: Address already in use` is caused while launching application modify `server.port` in `application.properties`
-- Please add path to save files through Upload API using `app.batch.file.landing-zone` property in `src/resources/application.properties`. Please make sure the access rights are availble for the folder 
+- Please add folder/directory path to save files through Upload API using `app.batch.file.landing-zone` property in `src/resources/application.properties`. Please make sure the Read/Write privilege rights are availble provided to the folder/directory path given 
 - This project uses in-memory database `H2`. To access database please navigate to `http://localhost:<configured_port>/h2-lib-console`
 - Swagger UI using open-api is available at `http://localhost:<configured_port>/swagger-ui-lib.html`
 
