@@ -60,7 +60,7 @@ Not Required:
 - API to Start, Stop, Restart batch execution and Read Processing Information of current execution
 - API to expose Resources which are loaded using Batch
 
-# More Help Needed?
+## More Help Needed to get started?
 - Sample Requests are available in `src/main/resources/requests.txt`.
 - Sample CSV available in the same folder `src/main/resources/books.csv`.
 
