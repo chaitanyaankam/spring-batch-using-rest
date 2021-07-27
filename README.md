@@ -46,7 +46,7 @@ Not Required:
 ## Assumptions
 - Data in CSV is structured
 - Skip Policy, Retry Policy and Restart Policy dosent corresponds to any business case for the given implmentation
-- ...colud be more
+- There colud be more...
 
 ## Pending
 - Validation to allow only CSV file in file upload API `TO DO`
@@ -60,7 +60,7 @@ Not Required:
 - API to Start, Stop, Restart batch execution and Read Processing Information of current execution
 - API to expose Resources which are loaded using Batch
 
-# More Help
+# More Help Needed?
 - Sample Requests are available in `src/main/resources/requests.txt`.
 - Sample CSV available in the same folder `src/main/resources/books.csv`.
 
