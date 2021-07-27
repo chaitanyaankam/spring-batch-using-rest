@@ -38,7 +38,7 @@ public class BookController {
 	
 	@GetMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity<Page<Book>> search(
-			@RequestParam(value="query", required = true, defaultValue ="ibsn:1001") String query,
+			@RequestParam(value="query", required = true, defaultValue ="ibsn:1001,author:Morgan Housel") String query,
 			@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "size", defaultValue = "10") int size) throws Exception {
 		Pageable pageable = PageRequest.of(page, size);
