@@ -10,12 +10,12 @@ For building and running the application you need:
 - [Maven 3](https://maven.apache.org)
 - Use `mvn --version` for verifying maven and `java --version` for verifying Java installations.
 
-## Building and Running Application using Command Prompt
+## Building and Running Application on Command Line
 
 Clone from git repository `git clone URL`.
-Navigate to project root and `mvn clean install`, alternativey use `mvn clean install -DskipTests=true` to skip tests
+Navigate to project root, Open command Line and use `mvn clean install` enter. Alternativey use `mvn clean install -DskipTests=true` to skip tests
 
-## Running the Application on IDE
+## Running Application on IDE
 
 Clone from git repository `git clone URL`.
 File >> Import as `Existing Maven Project`.
