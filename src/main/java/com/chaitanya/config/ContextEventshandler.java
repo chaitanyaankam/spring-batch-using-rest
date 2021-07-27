@@ -26,7 +26,7 @@ public class ContextEventshandler {
 	/**
 	 * {@summary} cleaning up file landing-zone on context start and stop
 	 * */
-	@EventListener(classes = { ContextStartedEvent.class, ContextStoppedEvent.class })
+	@EventListener(classes = { ContextStartedEvent.class, ContextStoppedEvent.class, ContextRefreshedEvent.class })
 	public void handleMultipleEvents() throws Exception {
 		fileHandlingService.cleanup();
 	}

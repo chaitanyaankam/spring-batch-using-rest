@@ -7,6 +7,8 @@ import java.util.Objects;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,7 @@ public class JobRequest {
 	 * */
 	private Map<String, String> parameters;
 	
+	@JsonIgnore
 	public JobParameters getJobParameters() {
 		JobParametersBuilder builder = new JobParametersBuilder();
 		if(Objects.isNull(parameters))
