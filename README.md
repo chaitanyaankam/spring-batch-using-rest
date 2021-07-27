@@ -60,11 +60,11 @@ Not Required:
 - API to Start, Stop, Restart batch execution and Read Processing Information of current execution
 - API to expose Resources which are loaded using Batch
 
-## More Help Needed to get started?
+## More help needed to get started?
 - Sample Requests are available in `src/main/resources/requests.txt`.
 - Sample CSV available in the same folder `src/main/resources/books.csv`.
 
-## References
-- [spring.docs](https://docs.spring.io/spring-batch/docs/current/reference/html/job.html#configureJob)
+## References & Books
+- [Spring Documentation](https://docs.spring.io/spring-batch/docs/current/reference/html/job.html#configureJob)
 - [baeldung.com](https://www.baeldung.com/spring-rest-api-query-search-language-tutorial)
 - [Spring Batch In Action Book](https://livebook.manning.com/book/spring-batch-in-action/about-this-book/)
