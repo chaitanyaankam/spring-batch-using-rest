@@ -67,3 +67,4 @@ Not Required:
 ## References
 - [spring.docs](https://docs.spring.io/spring-batch/docs/current/reference/html/job.html#configureJob)
 - [baeldung.com](https://www.baeldung.com/spring-rest-api-query-search-language-tutorial)
+- [manning.com](https://livebook.manning.com/book/spring-batch-in-action/about-this-book/)
