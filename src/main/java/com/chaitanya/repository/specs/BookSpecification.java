@@ -52,7 +52,7 @@ public class BookSpecification implements Specification<Book> {
 	@SuppressWarnings("unchecked")
 	private Predicate createPredicate(Path<?> path, CriteriaQuery<?> query, CriteriaBuilder builder) {
     	return (path.getJavaType() == String.class)
-            ? builder.like((Expression<String>) path, "%" + criteria.getValue() + "%");
+            ? builder.like((Expression<String>) path, "%" + criteria.getValue() + "%")
     		: builder.equal(path, criteria.getValue());
     }
     
