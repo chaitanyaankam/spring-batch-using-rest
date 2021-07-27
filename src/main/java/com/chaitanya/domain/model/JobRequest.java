@@ -13,12 +13,12 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author ChaitanyaAnkam
- * JobDetails - This class wraps all the necessary job information
+ * JobDetails - This class wraps all the necessary job request information
  */
 @Slf4j
 @Getter
 @Setter
-public class JobDetails {
+public class JobRequest {
 	
 	private String fileId;
 	

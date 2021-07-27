@@ -29,14 +29,17 @@ public class BookSpecification implements Specification<Book> {
     public Predicate toPredicate(Root<Book> root, CriteriaQuery<?> query, CriteriaBuilder builder) { 
         if (!criteria.getOperation().equalsIgnoreCase(":"))
         	return null;
-        else if(criteria.getKey().contains("."))
-        	return toNestedPredicate(root, query, builder);
-        else
-        	return createPredicate(root.get(criteria.getKey()), query, builder);
+        
+        return (criteria.getKey().contains("."))
+        	? toJoinPredicate(root, query, builder)
+        	: createPredicate(root.get(criteria.getKey()), query, builder);
     }
     
-    private Predicate toNestedPredicate(Root<Book> root, CriteriaQuery<?> query, CriteriaBuilder builder) { 
-    	String[] params = criteria.getKey().split(Pattern.quote("."));    	
+    private Predicate toJoinPredicate(Root<Book> root, CriteriaQuery<?> query, CriteriaBuilder builder) { 
+    	String[] params = criteria.getKey().split(Pattern.quote("."));
+    	if(params.length!=2)
+    		return null;
+    	
     	switch(params[0]) {
     		case "tags":
     			Join<Book, Tag> join = root.join("tags");
@@ -48,10 +51,9 @@ public class BookSpecification implements Specification<Book> {
     
 	@SuppressWarnings("unchecked")
 	private Predicate createPredicate(Path<?> path, CriteriaQuery<?> query, CriteriaBuilder builder) {
-    	if (path.getJavaType() == String.class)
-            return builder.like((Expression<String>) path, "%" + criteria.getValue() + "%");
-        else 
-            return builder.equal(path, criteria.getValue());
+    	return (path.getJavaType() == String.class)
+            ? builder.like((Expression<String>) path, "%" + criteria.getValue() + "%");
+    		: builder.equal(path, criteria.getValue());
     }
     
 }

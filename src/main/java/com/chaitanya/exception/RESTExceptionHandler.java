@@ -36,7 +36,10 @@ public class RESTExceptionHandler extends ResponseEntityExceptionHandler {
     }
     
     private ResponseEntity<ErrorResponse> handleException(Throwable ex, String body, HttpHeaders headers, HttpStatus status) {
-    	log.error("[AppRESTExceptionHandler]: ", ex);
-    	return new ResponseEntity<ErrorResponse>(ErrorResponse.builder().message(body).build(), status);
+    	log.error("[REST Exception Handler]: ", ex);
+    	ErrorResponse errorResponse = new ErrorResponse();
+    	errorResponse.setHttpStatus(status.name());
+    	errorResponse.setMessage(body);
+    	return new ResponseEntity<ErrorResponse>(errorResponse, status);
     }
 }

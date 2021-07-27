@@ -14,9 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobInfo {
-
 	private String jobname;
 	private long jobId;
 	private List<ExecutionInfo> executions;
-	
 }

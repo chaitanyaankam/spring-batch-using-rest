@@ -74,7 +74,7 @@ import lombok.AllArgsConstructor;
 @Configuration
 @AllArgsConstructor
 @EnableBatchProcessing
-public class ApplBatchConfig implements BatchConfigurer {
+public class BatchConfig implements BatchConfigurer {
 	
 	private TagService tagService;
 	

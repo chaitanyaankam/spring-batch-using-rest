@@ -9,7 +9,7 @@ import org.springframework.batch.core.launch.NoSuchJobExecutionException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 
-import com.chaitanya.domain.model.JobDetails;
+import com.chaitanya.domain.model.JobRequest;
 import com.chaitanya.domain.model.JobInfo;
 import com.chaitanya.domain.model.JobStatus;
 import com.chaitanya.exception.JobLaunchException;
@@ -19,7 +19,7 @@ public interface JobService {
 	/**
 	 * @implSpec launchJob - method for starting a batch job
 	 */
-	JobStatus launchJob(JobDetails jobDetails) throws JobLaunchException;
+	JobStatus launchJob(JobRequest jobDetails) throws JobLaunchException;
 
 	List<String> getJobNames();
 

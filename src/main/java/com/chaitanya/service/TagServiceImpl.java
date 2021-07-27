@@ -34,7 +34,7 @@ public class TagServiceImpl implements TagService {
 					else {
 						Tag newTag = new Tag();
 						newTag.setName(tag);
-						log.info("adding tag {}", tag);
+						log.info("adding new tag {} to database", tag);
 						return tagRepository.save(newTag);
 					}				
 				})

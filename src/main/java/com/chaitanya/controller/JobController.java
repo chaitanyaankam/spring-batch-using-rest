@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.chaitanya.domain.model.JobDetails;
+import com.chaitanya.domain.model.JobRequest;
 import com.chaitanya.domain.model.JobInfo;
 import com.chaitanya.domain.model.JobStatus;
 import com.chaitanya.exception.JobLaunchException;
@@ -39,7 +39,7 @@ public class JobController {
 	private JobService jobService;
 	
 	@PostMapping( value = "/start", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<JobStatus> launchJob(@RequestBody JobDetails jobDetails) throws JobLaunchException {
+	public @ResponseBody ResponseEntity<JobStatus> launchJob(@RequestBody JobRequest jobDetails) throws JobLaunchException {
 		return new ResponseEntity<JobStatus>(jobService.launchJob(jobDetails), HttpStatus.CREATED);
 	}
 	

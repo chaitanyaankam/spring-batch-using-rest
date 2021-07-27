@@ -27,7 +27,7 @@ import com.zaxxer.hikari.HikariDataSource;
         transactionManagerRef= "appTransactionManager")
 @EnableAutoConfiguration
 @EnableTransactionManagement
-public class AppDatasourceConfig {
+public class DatasourceConfig {
 
     @Bean
     @ConfigurationProperties("app.datasource")

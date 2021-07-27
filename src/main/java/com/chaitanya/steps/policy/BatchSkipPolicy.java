@@ -8,6 +8,8 @@ import org.springframework.batch.item.file.NonTransientFlatFileException;
 /**
  * @author ChaitanyaAnkam
  * External Skip policy
+ * 
+ * Currently not In use
  * */
 public class BatchSkipPolicy implements SkipPolicy {
 

@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.chaitanya.domain.model.ExecutionInfo;
-import com.chaitanya.domain.model.JobDetails;
+import com.chaitanya.domain.model.JobRequest;
 import com.chaitanya.domain.model.JobInfo;
 import com.chaitanya.domain.model.JobStatus;
 import com.chaitanya.exception.JobLaunchException;
@@ -63,7 +63,7 @@ public class JobServiceImpl implements JobService {
 	 * Launches spring-batch job using JobLauncher and Job classes
 	 * */
 	@Override
-	public JobStatus launchJob(JobDetails jobDetails) throws JobLaunchException {
+	public JobStatus launchJob(JobRequest jobDetails) throws JobLaunchException {
 		try {
 			//jobDetails.getParameters().put("startTime", AppUtils.currentTimestamp().toString());
 			jobDetails.getParameters().put("filePath", fileLandingZone+"\\"+requiresFile(jobDetails.getFileId()));

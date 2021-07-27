@@ -23,9 +23,7 @@ import com.chaitanya.repository.BookRepository;
 import com.chaitanya.repository.specs.BookSpecification;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
 @AllArgsConstructor
 public class BookServiceImpl implements BookService {
@@ -77,8 +75,7 @@ public class BookServiceImpl implements BookService {
 	
 	/**
 	 * getfilterSpecification - is used to construct where clause
-	 * from search paramters which are actual filtes for seach.	 * 
-	 * This method also filters valid params by vaildating across fields in a class
+	 * from search parameters which are actual filters for search.
 	 * @throws SearchException 
 	 * */
 	@Override

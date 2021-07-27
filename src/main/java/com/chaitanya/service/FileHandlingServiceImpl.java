@@ -1,11 +1,14 @@
 package com.chaitanya.service;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -13,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.chaitanya.domain.entity.BatchFile;
-import com.chaitanya.domain.model.FileImportDetails;
+import com.chaitanya.domain.model.BatchFileInfo;
 import com.chaitanya.exception.FileImportExcepiton;
 import com.chaitanya.repository.BatchFileRepository;
 import com.chaitanya.utils.AppUtils;
@@ -39,7 +42,7 @@ public class FileHandlingServiceImpl implements FileHandlingService {
 	}
 
 	@Override	
-	public FileImportDetails saveFile(MultipartFile file, String sourceSystemId) throws FileImportExcepiton {
+	public BatchFileInfo saveFile(MultipartFile file, String sourceSystemId) throws FileImportExcepiton {
 		try {
 			fileSystemStorageService.requiresNoFile(landingZone, file.getOriginalFilename());
 			BatchFile batchFile = BatchFile.builder()
@@ -52,8 +55,10 @@ public class FileHandlingServiceImpl implements FileHandlingService {
 			
 			fileSystemStorageService.copyFiletoDestination(file, landingZone);
 			batchFile.setEndTime(AppUtils.currentTimestamp());
-			saveBatchFile(batchFile);
-			return AppUtils.convertToDTO(batchFile, new FileImportDetails());
+			saveBatchFileInfo(batchFile);
+			return AppUtils.convertToDTO(batchFile, new BatchFileInfo());
+		} catch(FileImportExcepiton e) {
+			throw e;
 		} catch(Exception e) {
 			throw new FileImportExcepiton("Unable to save file", e);
 		}
@@ -61,7 +66,7 @@ public class FileHandlingServiceImpl implements FileHandlingService {
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.READ_UNCOMMITTED, rollbackFor = Exception.class)
-	public void saveBatchFile(BatchFile batchFile) throws IOException, FileImportExcepiton {
+	public void saveBatchFileInfo(BatchFile batchFile) throws IOException, FileImportExcepiton {
 		try {
 			batchFileRepository.save(batchFile);
 		} catch(Exception e) {
@@ -75,4 +80,14 @@ public class FileHandlingServiceImpl implements FileHandlingService {
 		log.info("Cleaning up landing zone  {}; backup operations not added yet", landingZone);
 		fileSystemStorageService.clean(landingZone);
 	}
+
+	@Override
+	public List<BatchFileInfo> findAll(Pageable page) throws Exception {
+		return batchFileRepository.findAll(page).stream().map(b->{
+			BatchFileInfo bInfo = new BatchFileInfo();
+			bInfo.setId(b.getId());
+			bInfo.setName(b.getName());
+			return bInfo;
+		}).collect(Collectors.toList());
+	}	
 }

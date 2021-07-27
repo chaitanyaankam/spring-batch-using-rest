@@ -22,6 +22,12 @@ import com.chaitanya.service.BookService;
 
 import lombok.AllArgsConstructor;
 
+/**
+ * @author ChaitanyaAnkam
+ * @apiNote Responsibilities:
+ * 		    a. CRUD Operations on Book
+ * 		    b. Search API with Filtering and Paging Support; TODO Adding Sorting and Projection support
+ * */
 @RestController
 @RequestMapping(value = "/books")
 @AllArgsConstructor
@@ -30,7 +36,8 @@ public class BookController {
 	private BookService bookService;
 
 	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<Page<Book>> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
+	public @ResponseBody ResponseEntity<Page<Book>> findAll(
+			@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "size", defaultValue = "10") int size) throws Exception {
 		Pageable pageable = PageRequest.of(page, size);
 		return ResponseEntity.ok(bookService.findAll(pageable));
@@ -46,7 +53,8 @@ public class BookController {
 	}
 	
 	@GetMapping(value = "/{ibsn}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<Book> findById(@RequestParam("ibsn") String ibsn) throws Exception {
+	public @ResponseBody ResponseEntity<Book> findById(
+			@RequestParam(value="ibsn", defaultValue = "1001") String ibsn) throws Exception {
 		return ResponseEntity.ok(bookService.findById(ibsn));
 	}
 	

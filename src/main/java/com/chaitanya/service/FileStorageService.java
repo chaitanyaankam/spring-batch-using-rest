@@ -7,10 +7,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.chaitanya.exception.FileImportExcepiton;
 
 /**
- * @author ChaitanyaAnkam
- * Depending on Storage Service more method signatures can be added
- * and more Implementations can be provided for the same interface
- * */
+ * @author ChaitanyaAnkam 
+ * {@summary} on Storage Service
+ * 		   Generic Service definition to handle File Storage
+ * 		   More Implementations for the same can be added
+ */
 public interface FileStorageService {
 	
 	enum STORAGE {FILE_SYSTEM, NAS, OTHER};
