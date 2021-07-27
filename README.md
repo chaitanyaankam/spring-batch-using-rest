@@ -1,5 +1,7 @@
 # spring-batch-rest
-Spring Batch and Spring REST example; Batch controlled and monitored through REST API's exposed
+- Spring Batch and Spring REST example
+- Batch controlled and monitored through REST API's exposed
+- Resources loaded from Batch are exposed through Spring REST
 
 ## Requirements
 For building and running the application you need:
