@@ -1,7 +1,7 @@
 # Spring-Batch-REST
 - Spring Batch and Spring REST example (Loading Data form CSV to Database using spring batch framework).
 - Batch controlled and monitored through REST API's exposed (Starting, Aborting, Restarting and Monitoring).
-- Resources loaded from Batch are exposed through Spring REST (Exposing Data loaded via spring batch).
+- Resources loaded from Batch are exposed through Spring REST and API's manage them (Exposing Data loaded via spring batch and CRUD API's for the same).
 
 ## Requirements
 For building and running the application you need:
@@ -13,7 +13,8 @@ For building and running the application you need:
 ## Building and Running Application on Command Line
 
 Clone from git repository `git clone URL`.
-Navigate to project root, Open command Line and use `mvn clean install` enter. Alternativey use `mvn clean install -DskipTests=true` to skip tests
+Navigate to project root, Open command Line and use `mvn clean install` enter. Alternativey use `mvn clean install -DskipTests=true` to skip tests.
+Change Directory to `target` and use `java -jar library-0.0.1-SNAPSHOT.jar` enter to start the application.
 
 ## Running Application on IDE
 
@@ -48,17 +49,16 @@ Not Required:
 - Skip Policy, Retry Policy and Restart Policy dosent corresponds to any business case for the given implmentation
 - There colud be more...
 
-## Pending
-- Validation to allow only CSV file in file upload API `TO DO`
-- Pending verification of `Database lock` scenrio `TO DO`
-- TaskExecutor Integration to step; found some spring issue `JobExecutionDao Synchronization issue`. `TO BE RESOLVED`
-- Test cases covered to business logic (Services, ItemReader, ItemWriter, ItemProcessor), `TO DO` for Controllers and Batch configuration
-- Integration with some `Observability` platform for monitoring runtime.
-
 ## Basic Features Achieved
 - API to Upload CSV file
 - API to Start, Stop, Restart batch execution and Read Processing Information of current execution
-- API to expose Resources which are loaded using Batch
+- API to expose Resources which are loaded using Batch and manage (CRUD Operations) them.
+
+## Pending
+- Validation to allow only CSV file in file upload API `TO DO`
+- TaskExecutor Integration to step; found some spring issue `JobExecutionDao Synchronization issue TO BE RESOLVED`
+- Imporve Unit Test case coverage `TO DO`
+- Integration with some `Observability` platform for monitoring runtime `TO DO`
 
 ## More help needed to get started?
 - Sample Requests are available in `src/main/resources/requests.txt`.
