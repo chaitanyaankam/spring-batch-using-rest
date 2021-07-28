@@ -24,6 +24,11 @@ public class RESTExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<ErrorResponse> handleIOIssues(Throwable ex) {
         return handleException(ex, IO_ERROR_MESSAGE, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+	
+	@ExceptionHandler(value = { NotFoundException.class})
+    protected ResponseEntity<ErrorResponse> handleResourceNotFound(Throwable ex) {
+        return handleException(ex, ex.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND);
+    }
     
     @ExceptionHandler(value = { FileImportExcepiton.class, SearchException.class, IllegalStateException.class })
     protected ResponseEntity<ErrorResponse> handleImportExceptions(Throwable ex) {

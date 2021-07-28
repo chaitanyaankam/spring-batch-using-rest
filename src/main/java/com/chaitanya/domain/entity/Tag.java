@@ -26,6 +26,7 @@ public class Tag {
 
 	@Id
 	@Column(name = "ID")
+	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	

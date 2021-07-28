@@ -3,6 +3,7 @@ package com.chaitanya.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.chaitanya.domain.entity.Book;
+import com.chaitanya.domain.entity.Tag;
 import com.chaitanya.domain.model.SearchCriteria;
 import com.chaitanya.exception.NotFoundException;
 import com.chaitanya.exception.SearchException;
@@ -63,7 +65,12 @@ public class BookServiceImpl implements BookService {
 		Book bookFromDB = findById(book.getIbsn());
 		bookFromDB.setName(book.getName());
 		bookFromDB.setAuthor(book.getAuthor());
-		bookFromDB.setRawtags(book.getRawtags());
+		
+		Set<Tag> tagsFromDB = bookFromDB.getTags();
+		if(Objects.nonNull(tagsFromDB))
+			tagsFromDB.addAll(book.getTags());
+		else 
+			bookFromDB.setTags(book.getTags());
 		return bookRepository.saveAndFlush(bookFromDB);
 	}
 

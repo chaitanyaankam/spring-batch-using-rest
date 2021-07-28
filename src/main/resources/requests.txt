@@ -1,6 +1,7 @@
 #REQUEST TO UPLOAD CSV BATCH FILE
 
-POST /batchFile/upload HTTP/1.1
+POST /batchFile/upload 
+HTTP/1.1
 Host: localhost:8080
 Content-Length: 295
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
@@ -19,7 +20,7 @@ ACER
 
 #RESPONSE
 {
-    "id": "ca3ba",
+    "fileId": "ca3ba",
     "name": "books.csv",
     "size": 603,
     "sourceSystemId": "ACER",
@@ -30,7 +31,8 @@ ACER
 ----------------------------------------------------------------------------------------------
 #REQUEST TO START BATCH;
 
-POST /job/start HTTP/1.1
+POST /job/start 
+HTTP/1.1
 Host: localhost:8080
 Content-Type: application/json
 Content-Length: 128
@@ -54,7 +56,8 @@ Content-Length: 128
 -------------------------------------------------------------------------------------------------
 #REQUST ALL JOB INSTANCE INFORMATION
 
-GET /job/instances/importBookJob HTTP/1.1
+GET /job/instances/importBookJob 
+HTTP/1.1
 Host: localhost:8080
 
 #RESPONSE
@@ -73,7 +76,8 @@ Host: localhost:8080
 --------------------------------------------------------------------------------------------------
 #REQUEST JOB EXECTION PROGRESS
 
-GET /job/1/execution/1 HTTP/1.1
+GET /job/1/execution/1 
+HTTP/1.1
 Host: localhost:8080
 
 #RESPONSE
@@ -91,17 +95,59 @@ Host: localhost:8080
 ---------------------------------------------------------------------------------------------------
 #REQUEST 
 
-GET /job/stop/1 HTTP/1.1
+GET /job/stop/1 
+HTTP/1.1
 Host: localhost:8080
 
-#RESPONSE
-true
 ---------------------------------------------------------------------------------------------------
 #REQUEST RESATRT
 
 GET /job/restart/1 HTTP/1.1
 Host: localhost:8080
 
-#RESPONSE
-2
 -----------------------------------------------------------------------------------------------------
+
+
+# REQUEST TO SEARCH BOOKS
+
+#REQUEST
+GET /books/search?query=ibsn:1001,author:Morgan Housel 
+HTTP/1.1
+Host: localhost:8080
+
+#RESPONSE
+{
+    "content": [
+        {
+            "ibsn": "1001",
+            "name": "The Psychology of Money",
+            "author": "Morgan Housel",
+            "tags": []
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "sorted": false,
+            "unsorted": true,
+            "empty": true
+        },
+        "offset": 0,
+        "pageNumber": 0,
+        "pageSize": 10,
+        "paged": true,
+        "unpaged": false
+    },
+    "last": true,
+    "totalPages": 1,
+    "totalElements": 1,
+    "size": 10,
+    "number": 0,
+    "sort": {
+        "sorted": false,
+        "unsorted": true,
+        "empty": true
+    },
+    "first": true,
+    "numberOfElements": 1,
+    "empty": false
+}
